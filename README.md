@@ -4,6 +4,13 @@ a koi pond for your terminal 🎏
 
 ## usage
 ### installation
+
+to run without installing:
+
+```shell
+python <(curl -s https://raw.githubusercontent.com/gsobell/koipond/home/koipond.py)
+```
+
 to download and launch, run the following:
 
 ```shell
@@ -11,7 +18,6 @@ git clone https://github.com/gsobell/koipond.git
 cd koipond && chmod +x koipond.py
 ./koipond.py
 ```
-<!-- optional dependency: `vlc` for mynoise.net [zen garden](https://mynoise.net/radios.php?r=zengarden) -->
 
 ## features
 
@@ -21,7 +27,7 @@ cd koipond && chmod +x koipond.py
 - koi fish
 
 ### future
-- peacefull background noise
+- better fish design
 
 
 ***
