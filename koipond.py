@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import sys   # for help message
 import curses
-import time
 import random
 from curses import wrapper
 # import vlc # for radio
@@ -185,7 +184,7 @@ class Lilies:
                               cell[1],
                               ". ", curses.color_pair(2)
                               )
-                stdscr.refresh()
+        stdscr.refresh()
 
     class Lily:
         def __init__(self, pad_y, pad_x, pad_size):
@@ -201,7 +200,7 @@ def setup(stdscr):
     """Sets up the screen and paints the pond blue"""
     stdscr.clear()   # Clear the screen
     curses.noecho()  # Turn off echoing of keys
-    curses.cbreak()
+    curses.cbreak()  # Turn off normal tty line buffering
     stdscr.keypad(True)   # Enable keypad mode
     curses.curs_set(0)    # Hide cursor
     curses.start_color()  # Enable colors if supported
@@ -221,8 +220,12 @@ def main(stdscr):
     school = School(stdscr)
     while True:
         school.update(stdscr)
-        time.sleep(FPS**-1)
+        curses.napms(int(1000/FPS))
         stdscr.refresh()
+        # if stdscr.getch() ==  curses.KEY_RESIZE:
+            # curses.resizeterm(*stdscr.getmaxyx)
+            # stdscr.clear()
+            # stdscr.refresh()
     stdscr.getch()  # wait to exit
 
 
